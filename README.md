@@ -1,61 +1,118 @@
-# MyNPMModule
 
-[![npm version](https://badge.fury.io/js/nx-pm2.svg)](https://badge.fury.io/js/mynpmmodule)
-[![Build Status](https://travis-ci.org/yourusername/mynpmmodule.svg?branch=master)](https://travis-ci.org/yourusername/mynpmmodule)
+# work in progress.. :)
 
-`MyNPMModule` is a simple, lightweight NPM package designed to help developers streamline their JavaScript-based projects. This easy-to-use module is perfect for both beginners and experienced developers.
+#  Nx-pm2 Plugin
 
-## Features
- 
-## Installation
-Use the package manager [npm](https://www.npmjs.com) to install `MyNPMModule`.
+  
+
+[![npm version](https://badge.fury.io/js/nx-pm2-plugin.svg)](https://badge.fury.io/js/nx-pm2-plugin)
+
+  
+
+The `nx-pm2-plugin` serves as a high-functionality add-on for an [Nx](https://nx.dev/) monorepo, designed to facilitate the execution of any Node.js applications utilizing the [pm2](https://pm2.io/) process manager. This plugin offers seamless integration, optimizing the management and maintenance of your application's runtime processes.
+  
+
+
+##  Installation
+
+Use the package manager [npm](https://www.npmjs.com) to install `nx-pm2-plugin`.
+
+  
 
 ```bash
-npm install mynpmmodule
+
+npm  install  nx-pm2-plugin
+
 ```
 
-## Usage
+##  Usage
 
-Import the module in your JavaScript file.
+create a task in nx ([example](https://github.com/jonathandsouza/nx-pm2/blob/main/packages/nx-pm2-example/project.json)):
 
-```javascript
-const myModule = require('mynpmmodule');
+```json
+    "pm2": {
+      "executor": "nx-pm2-plugin:pm2-executor",
+      "dependsOn": ["build"],
+      "options": { 
+				"file": "node_modules/nx/bin/nx.js",
+				"command": "<task to run in pm2>",
+				"logPath": "<log file>",
+				"logErrorPath": "<error log file>",
+				"instances": <nodes in the pm2 cluser>,
+				"mergeLogs": false,
+				"name": "<process name>"
+			}
+    }
 ```
 
-Call the main function.
+  
 
-```javascript
-myModule.doSomething();
+
+  
+
+execute  task
+
+  
+
+```bash
+npx nx run  <project>:pm2
+
 ```
 
-## Documentation
+  
+
+
+
+##  Documentation
+
+  
 
 For a more comprehensive guide on how to use this package, please refer to the [full documentation](https://yourusername.github.io/mynpmmodule/docs).
 
-## Test
+  
+
+##  Test
+
+  
 
 To run tests, use the following command:
 
+  
+
 ```bash
-npm test
+
+npm  test
+
 ```
+  
 
-## Contributing
+##  Documentation
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+  
 
-Please make sure to update tests as appropriate.
+  
 
-## License
+##  License
+
 [MIT](https://choosealicense.com/licenses/mit/)
 
-## Contact
+  
+
+##  Contact
+
+  
 
 If you have any questions or need further clarification, feel free to reach out.
 
-- Github: [yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+  
 
-## Changelog
+-  Github: [Jonathan Dsouza](https://github.com/jonathandsouza)
 
-See the [CHANGELOG.md](CHANGELOG.md) file for details.
+-  Email: mail2jona@yahoo.com
+
+  
+
+##  Changelog
+
+  
+See the [CHANGELOG.md](CHANGELOG.md) file for details.#  MyNPMModule
