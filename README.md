@@ -1,7 +1,7 @@
 
 # work in progress.. :)
 
-#  Nx-pm2 Plugin
+#  Nx-PM2 Plugin
 
   
 
