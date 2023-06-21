@@ -1,0 +1,66 @@
+{
+  "name": "nx-pm2-plugin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/nx-pm2-plugin/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/nx-pm2-plugin",
+        "main": "packages/nx-pm2-plugin/src/index.ts",
+        "tsConfig": "packages/nx-pm2-plugin/tsconfig.lib.json",
+        "assets": [
+          "packages/nx-pm2-plugin/*.md",
+          {
+            "input": "./packages/nx-pm2-plugin/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/nx-pm2-plugin/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/nx-pm2-plugin",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/nx-pm2-plugin",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/nx-pm2-plugin/**/*.ts",
+          "packages/nx-pm2-plugin/package.json",
+          "packages/nx-pm2-plugin/executors.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/nx-pm2-plugin/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
