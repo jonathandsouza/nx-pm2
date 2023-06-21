@@ -30,17 +30,17 @@ npm  install  nx-pm2-plugin
 create a task in nx ([example](https://github.com/jonathandsouza/nx-pm2/blob/main/packages/nx-pm2-example/project.json)):
 
 ```json
-    "pm2": {
+"pm2": {
       "executor": "nx-pm2-plugin:pm2-executor",
       "dependsOn": ["build"],
-      "options": { 
+      "options": {
 				"file": "node_modules/nx/bin/nx.js",
-				"command": "<task to run in pm2>",
-				"logPath": "<log file>",
-				"logErrorPath": "<error log file>",
-				"instances": <nodes in the pm2 cluser>,
+				"command": "nx-pm2-example:serve:production",
+				"logPath": "./_logs_/pm2/out.log",
+				"logErrorPath": "./_logs_/pm2/error.log",
+				"instances": 3,
 				"mergeLogs": false,
-				"name": "<process name>"
+				"name": "example"
 			}
     }
 ```
@@ -67,7 +67,6 @@ npx nx run  <project>:pm2
 
   
 
-For a more comprehensive guide on how to use this package, please refer to the [full documentation](https://yourusername.github.io/mynpmmodule/docs).
 
   
 
