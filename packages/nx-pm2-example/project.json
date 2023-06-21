@@ -1,0 +1,77 @@
+{
+  "name": "nx-pm2-example",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/nx-pm2-example/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/packages/nx-pm2-example",
+        "main": "packages/nx-pm2-example/src/main.ts",
+        "tsConfig": "packages/nx-pm2-example/tsconfig.app.json",
+        "assets": ["packages/nx-pm2-example/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "packages/nx-pm2-example/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "nx-pm2-example:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "nx-pm2-example:build:development"
+        },
+        "production": {
+          "buildTarget": "nx-pm2-example:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/nx-pm2-example/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/nx-pm2-example/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "pm2": {
+      "executor": "nx-pm2-plugin:pm2-executor",
+      "dependsOn": ["build"],
+      "options": {
+				"file": "node_modules/nx/bin/nx.js",
+				"command": "nx-pm2-example:serve:production",
+				"logPath": "./_logs_/pm2/out.log",
+				"logErrorPath": "./_logs_/pm2/error.log",
+				"instances": 3,
+				"mergeLogs": false,
+				"name": "example"
+			}
+    }
+  },
+  "tags": []
+}
