@@ -1,9 +1,42 @@
 {
   "$schema": "http://json-schema.org/schema",
   "version": 2,
-  "title": "Pm2Executor executor",
+  "title": "Pm2 executor",
   "description": "",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "command": {
+      "type": "string",
+      "description": "The command to run"
+    },
+    "file": {
+      "type": "string",
+      "description": "The file to run"
+    },
+    "logPath":{
+      "type": "string",
+      "description": "The path to the log file"
+    },
+    "errorLogPath":{
+      "type": "string",
+      "description": "The path to the error log file"
+    },
+    "instances": {
+      "type": "integer",
+      "description": "The number of instances to run"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the process"
+    },
+    "execMode":{
+      "type": "string",
+      "description": "The execution mode"
+    },
+    "mergeLogs":{
+      "type": "boolean",
+      "description": "Merge logs into one file"
+    }
+  },
   "required": []
 }

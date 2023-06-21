@@ -2,7 +2,9 @@
   "name": "nx-pm2",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "publish": "npm publish ./dist/packages/nx-pm2-plugin"
+  },
   "private": true,
   "devDependencies": {
     "@nx/eslint-plugin": "16.3.2",
