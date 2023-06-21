@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "publish": "npm publish ./dist/packages/nx-pm2-plugin"
+    "publish": "npm publish ./dist/packages/nx-pm2-plugin --access public"
   },
   "private": false,
   "devDependencies": {
