@@ -29,12 +29,10 @@ create a task in nx ([example](https://github.com/jonathandsouza/nx-pm2/blob/mai
       "executor": "nx-pm2-plugin:pm2-executor",
       "dependsOn": ["build"],
       "options": {
-				"file": "node_modules/nx/bin/nx.js",
 				"command": "nx-pm2-example:serve:production",
 				"logPath": "./_logs_/pm2/out.log",
 				"logErrorPath": "./_logs_/pm2/error.log",
 				"instances": 3,
-				"mergeLogs": false,
 				"name": "example"
 			}
     }
@@ -49,16 +47,15 @@ npx nx run  <project>:pm2
 
 ##  Documentation
 
-Executor options([type](https://github.com/jonathandsouza/nx-pm2/blob/main/packages/nx-pm2-plugin/src/executors/pm2-executor/schema.d.ts)): 
+### Executor options
+
+([Shema](https://github.com/jonathandsouza/nx-pm2/blob/main/packages/nx-pm2-plugin/src/executors/pm2-executor/schema.d.ts)): 
 
 | Property | Type | Description |
 | --- | --- | --- |
 | name | string | The name of the application |
-| script | string | Path to the application's main script file |
 | instances | number | Number of instances to start |
 | exec_mode | string | Execution mode, can be 'cluster' or 'fork' |
-| watch | boolean | Enable watching file changes and restart |
-| ignore_watch | array | Array of paths to ignore in watch mode |
 | max_memory_restart | string | Max memory amount after which app needs to restart |
 | log_date_format | string | Date format for logs |
 | merge_logs | boolean | Whether to merge logs |
@@ -67,7 +64,34 @@ Executor options([type](https://github.com/jonathandsouza/nx-pm2/blob/main/packa
 | out_file | string | Path to the file where application stdout will be written |
 | error_file | string | Path to the file where application stderr will be written |
 | pid_file | string | Path to the file where application pid will be written |
-  
+| command | string |  Nx project command to be executed by PM2 |
+
+
+### Picking up pm2 configuration from env:
+
+In the following example the **INSTANCE_NAME** & **NO_OF_INSTANCES** will be picked up from **process.env**
+
+```json
+	"pm2": {
+      "executor": "nx-pm2-plugin:pm2-executor",
+      "dependsOn": ["build"],
+      "options": {
+					"command": "nx-pm2-example:serve:production",
+					"instances": "${NO_OF_INSTANCES}",
+					"name": "${INSTANCE_NAME}"
+				}
+    }
+
+```
+### Mandatory options:
+
+The following executor options are mandatory:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| command | string |  Nx project command to be executed by PM2 |
+| name | string | The name of the PM2 instance |
+
 
 ##  Test
 
