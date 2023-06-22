@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "pm2-executor": {
+      "implementation": "./src/executors/pm2-executor/executor",
+      "schema": "./src/executors/pm2-executor/schema.json",
+      "description": "pm2-executor for nx monorepo"
+    }
+  }
+}

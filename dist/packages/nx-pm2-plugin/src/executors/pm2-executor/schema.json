@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "Pm2 executor",
+  "description": "",
+  "type": "object",
+  "properties": {
+
+    "name": {
+      "type": "string",
+      "description": "The name of the application"
+    },
+
+    "instances": {
+      "type": "number",
+      "description": "Number of instances to start"
+    },
+
+    "exec_mode": {
+      "type": "string",
+      "description": "Execution mode, can be 'cluster' or 'fork'"
+    },
+
+    "max_memory_restart": {
+      "type": "string",
+      "description": "Max memory amount after which app needs to restart"
+    },
+
+    "log_date_format": {
+      "type": "string",
+      "description": "Date format for logs"
+    },
+
+    "merge_logs": {
+      "type": "boolean",
+      "description": "Whether to merge logs"
+    },
+
+    "autorestart": {
+      "type": "boolean",
+      "description": "Whether to auto-restart the application when it crashes or ends"
+    },
+
+    "log_file": {
+      "type": "string",
+      "description": "Path to the file where both out and error logs will be written"
+    },
+
+    "out_file": {
+      "type": "string",
+      "description": "Path to the file where application stdout will be written"
+    },
+
+    "error_file": {
+      "type": "string",
+      "description": "Path to the file where application stderr will be written"
+    },
+
+    "pid_file": {
+      "type": "string",
+      "description": "Path to the file where application pid will be written"
+    },
+
+    "command": {
+      "type": "string",
+      "description": "Enable source map support for stack traces"
+    }
+
+  },
+
+  "required": ["name","command"]
+}
