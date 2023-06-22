@@ -19,12 +19,17 @@ export default async function runExecutor(
 	const gc = (param, key = '') => (param ? `${key ? '--' + key : ''} ${reduce(param)}` : '');
 
 	const command = `npx pm2 start` +
-		`${gc(options.file)} ` +
+		`${gc('node_modules/nx/bin/nx.js')} ` +
 		`${gc(options.instances, 'instances')} ` +
 		`${gc(options.name, 'name')} ` +
-		`${gc(options.errorLogPath, 'error')} ` +
-		`${gc(options.logPath, 'output')} ` +
-		`${options.mergeLogs ? gc('', 'merge-logs') + ' ' : ''}` +
+		`${gc(options.error_file, 'error')} ` +
+		`${gc(options.out_file, 'output')} ` +
+		`${gc(options.pid_file, 'pid')} ` +
+		`${gc(options.log_file, 'log')} ` +
+		`${gc(options.log_date_format, 'log-date-format')} ` +
+		`${gc(options.max_memory_restart, 'max-memory-restart')} ` +
+		`${gc(options.exec_mode, 'exec-mode')} ` +
+		`${options.merge_logs ? gc('', 'merge-logs') + ' ' : ''}` +
 		
     // Note: the space before run is necessary otherwise the command will fail.
 		`${gc(options.command, ' run')}`;

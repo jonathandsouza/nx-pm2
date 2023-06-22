@@ -5,38 +5,68 @@
   "description": "",
   "type": "object",
   "properties": {
-    "command": {
-      "type": "string",
-      "description": "The command to run"
-    },
-    "file": {
-      "type": "string",
-      "description": "The file to run"
-    },
-    "logPath":{
-      "type": "string",
-      "description": "The path to the log file"
-    },
-    "errorLogPath":{
-      "type": "string",
-      "description": "The path to the error log file"
-    },
-    "instances": {
-      "type": "integer",
-      "description": "The number of instances to run"
-    },
+
     "name": {
       "type": "string",
-      "description": "The name of the process"
+      "description": "The name of the application"
     },
-    "execMode":{
+
+    "instances": {
+      "type": "number",
+      "description": "Number of instances to start"
+    },
+
+    "exec_mode": {
       "type": "string",
-      "description": "The execution mode"
+      "description": "Execution mode, can be 'cluster' or 'fork'"
     },
-    "mergeLogs":{
+
+    "max_memory_restart": {
+      "type": "string",
+      "description": "Max memory amount after which app needs to restart"
+    },
+
+    "log_date_format": {
+      "type": "string",
+      "description": "Date format for logs"
+    },
+
+    "merge_logs": {
       "type": "boolean",
-      "description": "Merge logs into one file"
+      "description": "Whether to merge logs"
+    },
+
+    "autorestart": {
+      "type": "boolean",
+      "description": "Whether to auto-restart the application when it crashes or ends"
+    },
+
+    "log_file": {
+      "type": "string",
+      "description": "Path to the file where both out and error logs will be written"
+    },
+
+    "out_file": {
+      "type": "string",
+      "description": "Path to the file where application stdout will be written"
+    },
+
+    "error_file": {
+      "type": "string",
+      "description": "Path to the file where application stderr will be written"
+    },
+
+    "pid_file": {
+      "type": "string",
+      "description": "Path to the file where application pid will be written"
+    },
+
+    "command": {
+      "type": "string",
+      "description": "Enable source map support for stack traces"
     }
+
   },
-  "required": []
+
+  "required": ["name","command"]
 }
