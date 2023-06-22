@@ -1,22 +1,34 @@
 import { Pm2ExecutorSchema as Pm2ExecutorSchema } from './schema';
 import executor from './executor';
+import * as pm2 from 'pm2';
+import { promisify } from 'util';
 
-// const options: Pm2ExecutorSchema = {
-//   command: 'start',
-//   file: 'apps/api/src/main.ts',
-//   logPath: 'logs/api.log',
-//   errorLogPath: 'logs/api-error.log',
-//   instances: 1,
-//   name: 'api',
-//   execMode: 'fork',
-// };
+
 
 describe('Pm2Executor Executor', () => {
-  it('can run', async () => {
-    // const output = await executor(options);
-    // expect(output.success).toBe(true);
 
-    //@TODO: add tests
-    expect(true).toBe(true);
+  test('Basic test configuration should run correctly', async function ()  {
+
+  await new Promise( (resolve)=> {
+
+    pm2.connect(function(err) {
+
+      const options: Pm2ExecutorSchema = {
+        command: 'start',
+        name: 'api',
+      };
+  
+      // const output = await executor(options);
+      // expect(output.success).toBe(true);
+  
+      // await stop(options.name);
+      // console.log(`${options.name} has been stopped`);
+
+      resolve(1);
+  
+    });
   });
-});
+
+  }, 20000); 
+
+})

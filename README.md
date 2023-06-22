@@ -104,10 +104,6 @@ npm  test
 ```
   
 
- 
-
-  
-
 ##  License
 
 [MIT](https://choosealicense.com/licenses/mit/)

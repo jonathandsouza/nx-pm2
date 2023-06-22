@@ -5,7 +5,6 @@ import { promisify } from 'util';
 export default async function runExecutor(
 	options: Pm2ExecutorSchema,
 ) {
-
 	const reduce = param => {
 		if (typeof param !== 'string') {
 			return param;
@@ -28,7 +27,6 @@ export default async function runExecutor(
 		`${gc(options.log_file, 'log')} ` +
 		`${gc(options.log_date_format, 'log-date-format')} ` +
 		`${gc(options.max_memory_restart, 'max-memory-restart')} ` +
-		`${gc(options.exec_mode, 'exec-mode')} ` +
 		`${options.merge_logs ? gc('', 'merge-logs') + ' ' : ''}` +
 		
     // Note: the space before run is necessary otherwise the command will fail.

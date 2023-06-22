@@ -16,11 +16,6 @@
       "description": "Number of instances to start"
     },
 
-    "exec_mode": {
-      "type": "string",
-      "description": "Execution mode, can be 'cluster' or 'fork'"
-    },
-
     "max_memory_restart": {
       "type": "string",
       "description": "Max memory amount after which app needs to restart"
