@@ -1,6 +1,6 @@
 {
   "name": "nx-pm2-plugin",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "type": "commonjs",
   "executors": "./executors.json",
   "peerDependencies": {
