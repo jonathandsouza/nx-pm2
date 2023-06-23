@@ -1,6 +1,4 @@
 
-# work in progress.. :)
-
 #  Nx-PM2 Plugin
 
 [![npm version](https://badge.fury.io/js/nx-pm2-plugin.svg)](https://badge.fury.io/js/nx-pm2-plugin)
