@@ -94,7 +94,7 @@ To run tests, use the following command:
 
 ```bash
 
-npm  test
+npm test
 
 ```
   

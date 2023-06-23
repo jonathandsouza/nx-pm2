@@ -1,12 +1,20 @@
 {
   "name": "nx-pm2-plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "commonjs",
   "executors": "./executors.json",
   "peerDependencies": {
     "nx": "^16.0.0",
     "tslib": "2.5.3"
   },
+  "keywords": [
+    "nx",
+    "pm2",
+    "plugin",
+    "monorepo",
+    "executors",
+    "custom-executors"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jonathandsouza/nx-pm2"
