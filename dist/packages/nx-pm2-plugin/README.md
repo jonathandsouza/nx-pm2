@@ -1,67 +1,122 @@
 
-# work in progress...
+#  Nx-PM2 Plugin
 
-# PM2 NX executor
+[![npm version](https://badge.fury.io/js/nx-pm2-plugin.svg)](https://badge.fury.io/js/nx-pm2-plugin)
 
-[![npm version](https://badge.fury.io/js/pm2-nx-executor.svg)](https://badge.fury.io/js/pm2-nx-executor)
+The `nx-pm2-plugin` serves as a high-functionality add-on for an [Nx](https://nx.dev/) monorepo, designed to facilitate the execution of any Node.js applications utilizing the [pm2](https://pm2.io/) process manager. This plugin offers seamless integration, optimizing the management and maintenance of your application's runtime processes.
 
-`pm2-nx-executor` is a simple, lightweight NPM package designed to help run node projects using [pm2](https://pm2.keymetrics.io/)
 
-## Features
-- Easy to install
-- Highly customizable
-- Robust error handling
-- Comprehensive API
+##  Installation
 
-## Installation
-Use the package manager [npm](https://www.npmjs.com) to install `pm2-nx-executor`.
+Use the package manager [npm](https://www.npmjs.com) to install `nx-pm2-plugin`.
+
+  
 
 ```bash
-npm install pm2-nx-executor
+
+npm  install  nx-pm2-plugin
+
 ```
 
-## Usage
+##  Usage
 
-Import the module in your JavaScript file.
+create a task in nx ([example](https://github.com/jonathandsouza/nx-pm2/blob/main/packages/nx-pm2-example/project.json)):
 
-```javascript
-const myModule = require('mynpmmodule');
+```json
+"pm2": {
+      "executor": "nx-pm2-plugin:pm2-executor",
+      "dependsOn": ["build"],
+      "options": {
+				"command": "nx-pm2-example:serve:production",
+				"logPath": "./_logs_/pm2/out.log",
+				"logErrorPath": "./_logs_/pm2/error.log",
+				"instances": 3,
+				"name": "example"
+			}
+    }
 ```
 
-Call the main function.
+execute  task
 
-```javascript
-myModule.doSomething();
+```bash
+npx nx run  <project>:pm2
+
 ```
 
-## Documentation
+##  Documentation
 
-For a more comprehensive guide on how to use this package, please refer to the [full documentation](https://yourusername.github.io/mynpmmodule/docs).
+### Executor options
 
-## Test
+([Shema](https://github.com/jonathandsouza/nx-pm2/blob/main/packages/nx-pm2-plugin/src/executors/pm2-executor/schema.d.ts)): 
+
+| Property | Type | Description |
+| --- | --- | --- |
+| name | string | The name of the application |
+| instances | number | Number of instances to start |
+| exec_mode | string | Execution mode, can be 'cluster' or 'fork' |
+| max_memory_restart | string | Max memory amount after which app needs to restart |
+| log_date_format | string | Date format for logs |
+| merge_logs | boolean | Whether to merge logs |
+| autorestart | boolean | Whether to auto-restart the application when it crashes or ends |
+| log_file | string | Path to the file where both out and error logs will be written |
+| out_file | string | Path to the file where application stdout will be written |
+| error_file | string | Path to the file where application stderr will be written |
+| pid_file | string | Path to the file where application pid will be written |
+| command | string |  Nx project command to be executed by PM2 |
+
+
+### Picking up pm2 configuration from env:
+
+In the following example the **INSTANCE_NAME** & **NO_OF_INSTANCES** will be picked up from **process.env**
+
+```json
+	"pm2": {
+      "executor": "nx-pm2-plugin:pm2-executor",
+      "dependsOn": ["build"],
+      "options": {
+					"command": "nx-pm2-example:serve:production",
+					"instances": "${NO_OF_INSTANCES}",
+					"name": "${INSTANCE_NAME}"
+				}
+    }
+
+```
+### Mandatory options:
+
+The following executor options are mandatory:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| command | string |  Nx project command to be executed by PM2 |
+| name | string | The name of the PM2 instance |
+
+
+##  Test
 
 To run tests, use the following command:
 
 ```bash
-npm test
+
+npm  test
+
 ```
+  
 
-## Contributing
+##  License
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-## Contact
+##  Contact
 
 If you have any questions or need further clarification, feel free to reach out.
 
-- Github: [Jonathan D'souza](https://github.com/yourusername)
-- Email: mail2jona@yahoo.com
+  
 
-## Changelog
+-  Github: [Jonathan Dsouza](https://github.com/jonathandsouza)
 
+-  Email: mail2jona@yahoo.com
+
+  
+
+##  Changelog
 See the [CHANGELOG.md](CHANGELOG.md) file for details.
