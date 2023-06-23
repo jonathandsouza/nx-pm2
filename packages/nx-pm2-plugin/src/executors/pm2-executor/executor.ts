@@ -29,7 +29,7 @@ export default async function runExecutor(
 		`${gc(options.max_memory_restart, 'max-memory-restart')} ` +
 		`${options.merge_logs ? gc('', 'merge-logs') + ' ' : ''}` +
 		
-    // Note: the space before run is necessary otherwise the command will fail.
+		// Note: the space before run is necessary otherwise the command will fail.
 		`${gc(options.command, ' run')}`;
 
 	console.log('Pm2 Executor ran for:', command);
