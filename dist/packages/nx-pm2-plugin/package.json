@@ -3,10 +3,6 @@
   "version": "1.0.2",
   "type": "commonjs",
   "executors": "./executors.json",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jonathandsouza/nx-pm2"
-  },
   "peerDependencies": {
     "nx": "^16.0.0",
     "tslib": "2.5.3"
