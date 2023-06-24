@@ -32,7 +32,7 @@ create a task in nx ([example](https://github.com/jonathandsouza/nx-pm2/blob/mai
 execute  task
 
 ```bash
-npx nx run  <project>:pm2
+npx nx run  nx-pm2-example:pm2
 
 ```
 
