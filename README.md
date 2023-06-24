@@ -22,12 +22,8 @@ create a task in nx ([example](https://github.com/jonathandsouza/nx-pm2/blob/mai
 ```json
 "pm2": {
 	"executor": "nx-pm2-plugin:pm2-executor",
-	"dependsOn": ["build"],
 	"options": {
 		"command": "nx-pm2-example:serve:production",
-		"logPath": "./_logs_/pm2/out.log",
-		"logErrorPath": "./_logs_/pm2/error.log",
-		"instances": 3,
 		"name": "example"
 	}
 }
