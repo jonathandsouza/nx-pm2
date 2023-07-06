@@ -45,8 +45,7 @@ npx nx run  nx-pm2-example:pm2
 | Property | Type | Description |
 | --- | --- | --- |
 | name | string | The name of the application |
-| instances | number | Number of instances to start |
-| exec_mode | string | Execution mode, can be 'cluster' or 'fork' |
+| instances | number | Number of instances to start, if set, automatically in cluster mode |
 | max_memory_restart | string | Max memory amount after which app needs to restart |
 | log_date_format | string | Date format for logs |
 | merge_logs | boolean | Whether to merge logs |
