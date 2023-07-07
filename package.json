@@ -1,11 +1,12 @@
 {
   "name": "nx-pm2",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "license": "MIT",
   "scripts": {
-    "build": "npx nx run-many --target=build --all=true ",
+    "build": "nx run-many --target=build --all=true ",
     "publish": "npm publish ./dist/packages/nx-pm2-plugin --access public",
-    "test": "npx nx run-many --target=test --all=true "
+    "start:example": "nx run pm2 --project=nx-pm2-example",
+    "test": "nx run-many --target=test --all=true"
   },
   "private": false,
   "devDependencies": {

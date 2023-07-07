@@ -1,7 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-dist/packages/nx-pm2-plugin-example
+/dist/packages/nx-pm2-plugin-example
+/_logs_
 tmp
 /out-tsc
 

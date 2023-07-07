@@ -22,12 +22,8 @@ create a task in nx ([example](https://github.com/jonathandsouza/nx-pm2/blob/mai
 ```json
 "pm2": {
 	"executor": "nx-pm2-plugin:pm2-executor",
-	"dependsOn": ["build"],
 	"options": {
 		"command": "nx-pm2-example:serve:production",
-		"logPath": "./_logs_/pm2/out.log",
-		"logErrorPath": "./_logs_/pm2/error.log",
-		"instances": 3,
 		"name": "example"
 	}
 }
@@ -36,7 +32,7 @@ create a task in nx ([example](https://github.com/jonathandsouza/nx-pm2/blob/mai
 execute  task
 
 ```bash
-npx nx run  <project>:pm2
+npx nx run  nx-pm2-example:pm2
 
 ```
 
@@ -49,8 +45,7 @@ npx nx run  <project>:pm2
 | Property | Type | Description |
 | --- | --- | --- |
 | name | string | The name of the application |
-| instances | number | Number of instances to start |
-| exec_mode | string | Execution mode, can be 'cluster' or 'fork' |
+| instances | number | Number of instances to start, if set, automatically in cluster mode |
 | max_memory_restart | string | Max memory amount after which app needs to restart |
 | log_date_format | string | Date format for logs |
 | merge_logs | boolean | Whether to merge logs |
