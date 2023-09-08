@@ -6,6 +6,9 @@
   "peerDependencies": {
     "nx": "^16.0.0"
   },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
   "keywords": ["nx", "pm2", "plugin", "monorepo", "executors","custom-executors"],
   "repository": {
     "type": "git",
